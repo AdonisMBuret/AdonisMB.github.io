@@ -1,1 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador PDF Final</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body class="bg-gray-100">
+  <div class="max-w-5xl mx-auto p-6">
+    <header class="bg-white border border-gray-200 rounded-xl p-6 mb-6 flex flex-col sm:flex-row justify-between items-center shadow">
+      <img src="./assets/logo.svg" alt="Logo" class="h-16 mb-4 sm:mb-0">
+      <div class="text-sm text-gray-600 text-right">
+        <p><strong>Email:</strong> firmadetasadores@gmail.com</p>
+        <p><strong>Contacto:</strong> (849)-405-5251 / (829)-591-2781</p>
+      </div>
+    </header>
 
+    <form id="levantamiento-form" class="space-y-6 bg-white border border-gray-200 rounded-xl p-6 shadow">
+      <h2 class="text-lg font-bold border-b-2 border-red-700 pb-2">Datos Generales</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input id="solicitante" placeholder="Solicitante *" class="border p-2 rounded">
+        <input id="direccion" placeholder="Dirección *" class="border p-2 rounded">
+        <input id="fecha" type="date" class="border p-2 rounded">
+        <input id="no_tasacion" placeholder="No. Tasación *" class="border p-2 rounded">
+        <input id="atencion" placeholder="Atención" class="border p-2 rounded">
+        <input id="telefono" placeholder="Teléfono" class="border p-2 rounded">
+      </div>
+
+      <h2 class="text-lg font-bold border-b-2 border-red-700 pb-2">Detalles de la Propiedad</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input id="propiedad_no" placeholder="Propiedad No." class="border p-2 rounded">
+        <input id="edad_inmueble" placeholder="Edad del Inmueble (años)" class="border p-2 rounded">
+        <input id="niveles" placeholder="Niveles" class="border p-2 rounded">
+        <input id="orientacion" placeholder="Orientación" class="border p-2 rounded">
+      </div>
+
+      <h2 class="text-lg font-bold border-b-2 border-red-700 pb-2">Áreas y Comodidades</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+        <label><input type="checkbox" id="area_parqueo"> Parqueo</label>
+        <label><input type="checkbox" id="area_galeria"> Galería</label>
+        <label><input type="checkbox" id="area_recibidor"> Recibidor</label>
+        <label><input type="checkbox" id="area_balcon"> Balcón</label>
+        <label><input type="checkbox" id="area_terraza"> Terraza</label>
+        <label><input type="checkbox" id="area_sala_comedor"> Sala/Comedor</label>
+        <label><input type="checkbox" id="area_cocina"> Cocina</label>
+        <label><input type="checkbox" id="area_patio"> Patio</label>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <input id="num_habitaciones" placeholder="No. Habitaciones" class="border p-2 rounded">
+        <input id="num_banos" placeholder="No. Baños" class="border p-2 rounded">
+      </div>
+
+      <h2 class="text-lg font-bold border-b-2 border-red-700 pb-2">Observaciones</h2>
+      <textarea id="detalles_extras" class="border p-2 rounded w-full" rows="5" placeholder="Detalles adicionales"></textarea>
+
+      <button id="generate-pdf-btn" class="bg-red-700 text-white px-4 py-2 rounded hover:bg-red-800 w-full">Generar PDF</button>
+    </form>
+  </div>
+
+  <div id="confirmation-modal" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative mx-auto mt-28 w-[95%] max-w-md rounded-2xl bg-white shadow-xl border p-5">
+      <h3 class="text-lg font-semibold mb-2">Campos obligatorios vacíos</h3>
+      <p class="text-sm mb-4">Algunos campos (*) están vacíos. ¿Deseas continuar?</p>
+      <div class="flex justify-end gap-2">
+        <button id="confirm-anyway-btn" class="bg-red-700 text-white px-4 py-2 rounded">Sí, generar</button>
+        <button id="cancel-btn" class="border px-4 py-2 rounded">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>

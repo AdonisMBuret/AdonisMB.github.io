@@ -1,0 +1,27 @@
+
+:root{
+  --brand-red: #b91c1c;
+}
+.input-error{
+  outline: 2px solid var(--brand-red);
+}
+
+
+/* Forzar saltos de página en PDF */
+html2pdf .page-break {
+  page-break-before: always;
+}
+
+#levantamiento-form {
+  overflow: visible !important;
+  page-break-inside: auto;
+}
+
+textarea {
+  white-space: pre-wrap; /* respeta saltos de línea en Observaciones */
+}
+
+.observaciones {
+  page-break-inside: auto;
+  overflow: visible !important;
+}
